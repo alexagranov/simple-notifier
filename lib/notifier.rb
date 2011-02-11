@@ -27,15 +27,13 @@ require 'action_mailer'
 $:.unshift(File.dirname(__FILE__))
 require 'notifier/base'
 
-=begin
 module Notifier #:nodoc:
   module VERSION #:nodoc:
     MAJOR = 0 unless defined?(MAJOR)
     MINOR = 1 unless defined?(MINOR)
-    TINY = 0 unless defined?(TINY)
+    PATCH = 0 unless defined?(PATCH)
 
-    STRING = [MAJOR, MINOR, TINY].join('.') unless defined?(STRING)
+    STRING = [MAJOR, MINOR, PATCH].join('.') unless defined?(STRING)
   end
 end
-=end
 
