@@ -4,7 +4,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{notifier}
+  s.name = %q{simple-notifier}
   s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/test_error_notifier.rb"
   ]
-  s.homepage = %q{http://github.com/alexagranov/notifier}
+  s.homepage = %q{http://github.com/alexagranov/simple-notifier}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.5.0}

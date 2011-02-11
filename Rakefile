@@ -12,8 +12,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "notifier"
-  gem.homepage = "http://github.com/alexagranov/notifier"
+  gem.name = "simple-notifier"
+  gem.homepage = "http://github.com/alexagranov/simple-notifier"
   gem.license = "MIT"
   gem.summary = %Q{Allows one to create notification handlers for any type of object.}
   gem.description = %Q{Inspired by ActionMailer, Notifier offers Notifier::Base, a base class for creating notification handlers on any class or instance of a class.  Simply define a method in your handler named after the type of object you would like to create notification events for, substituting any namespace "::" delineation with "_", along with a signature that allows for the object as the first parameter and an optional params hash.  Then notify on that object or class by simply calling MyHandler.notify!(myclass, params).}

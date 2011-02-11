@@ -10,7 +10,7 @@ doc
 
 # bundler
 .bundle
-notifier
+simple-notifier
 
 # jeweler generated
 pkg
