@@ -26,22 +26,24 @@ module Notifier
     end
 
 =begin rdoc
-  Add a generic handler for Exception which allows us to call Notifier::Error.notify!(exception).
+  Notification handler for Exception.  Called via Notifier::Error.notify!(exception).
 
   Currently, use an internal ActionMailer class to send out an email to the error recipients list about potential problems.
 =end
     def exception(exception, opts={})
-      opts[:body] = exception.message + "\n" # + exception.backtrace.join("\n")
+      opts[:body] = exception.message + "\n"
+      opts[:body] += exception.backtrace.join("\n") unless exception.backtrace.nil?
       Emailer.deliver_error_notification(exception.message, opts)
     end
 
 =begin rdoc
-  Add a generic handler for String which allows us to call Notifier::Error.notify!("some error msg").
+  Notification handler for String.  Called via Notifier::Error.notify!("some error msg").
 
-  Currently, just log to error log.
+  Currently, use an internal ActionMailer class to send out an email to the error recipients list about potential problems.
 =end
     def string(msg, opts={})
-      Rails.logger.error msg
+      opts[:body] = msg
+      Emailer.deliver_error_notification(msg, opts)
     end
 
     private
