@@ -6,8 +6,9 @@ require 'shoulda-matchers'
 class TestErrorNotifier < Test::Unit::TestCase
   context "the test error notifier" do
     subject { "TestErrorNotifier" }
+
 =begin
-  should "log that string to the Rails log if ErrorNotifier notifies on a String" do
+  should "log to the Rails log if ErrorNotifier notifies on a String" do
     flunk "hey buddy, you should probably rename this file and start testing for real"
   end
 =end

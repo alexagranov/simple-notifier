@@ -1,16 +1,13 @@
 =begin rdoc
-  The intent of this module is to provide a framework for notification about Class-specific events.  The base class simply adds a 
-  method_missing implementation to child classes that knows to delegate all attempts to call 'notify!(object_or_class, params...)' to a 
-  method in the child class named after the class type of the first parameter.  Concrete sub-classes should implement a method named after
-  the class type of the document being notified on - with the convention that the method name is all downcase with '::' replaced with '_'.
+  The notifier gem offers a simple framework for type-based notification events.
 
-  For example:
+  Working much like ActionMailer, this base class simply adds a method_missing implementation to child classes that allows delegation of calls to
+  'notify!(object_or_class, params...)' to a method in the child class named after the class type of the first parameter.  
 
-  Notifier::Preorder offers methods:
-    - music_digitalalbum
-    - music_compactdisc
-    - music_album
-    - etc...
+  Concrete sub-classes should implement a method named after the class type of the document being notified on - with the convention that the method 
+  name is all downcase with '::' replaced with '_'.
+
+  For an example, see Notifier::Error in the /example directory.
 =end
 module Notifier
   class Base
