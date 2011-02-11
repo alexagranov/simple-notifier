@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
     "example/notifier/error/emailer/error_notification.erb",
     "lib/notifier.rb",
     "lib/notifier/base.rb",
-    "notifier.gemspec",
+    "simple-notifier.gemspec",
     "test/helper.rb",
     "test/test_error_notifier.rb"
   ]
