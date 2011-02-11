@@ -12,9 +12,17 @@ module Notifier
   :recipients => <array of email addresses to receive email notifications>
   :from => <email address to be used for the From: field of email notification>
 =end
-    def configure(opts={})
-      @recipients = opts[:recipients]
-      @from = opts[:from]
+    def self.configure(opts={})
+      @@recipients = opts[:recipients]
+      @@from = opts[:from]
+    end
+
+    def self.recipients
+      @@recipients
+    end
+
+    def self.from
+      @@from
     end
 
 =begin rdoc
@@ -22,9 +30,9 @@ module Notifier
 
   Currently, use an internal ActionMailer class to send out an email to the error recipients list about potential problems.
 =end
-    def exception(klass, opts={})
-      opts[:body] = opts[:exception].message + "\n" + opts[:exception].backtrace.join("\n") if opts[:exception]
-      Emailer.deliver_error_notification(opts[:error_msg], opts)
+    def exception(exception, opts={})
+      opts[:body] = exception.message + "\n" # + exception.backtrace.join("\n")
+      Emailer.deliver_error_notification(exception.message, opts)
     end
 
 =begin rdoc
@@ -38,11 +46,17 @@ module Notifier
 
     private
 
+    class ConfigurationError < StandardError
+    end
+
     class Emailer < ActionMailer::Base
+      self.template_root = File.dirname(__FILE__)
+      self.delivery_method = :test
+
       def error_notification(error_msg, opts={})
-        raise 
-        recipients @recipients.join(',')
-        from       @from
+        raise ConfigurationError.new("Failed to call Notifier::Error.configure with :recipients and/or :from") if Notifier::Error.recipients.nil? or Notifier::Error.from.nil?
+        recipients Notifier::Error.recipients.join(",")
+        from       Notifier::Error.from
         subject    error_msg
         body       :body => opts[:body]
       end
