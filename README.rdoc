@@ -1,8 +1,32 @@
-= notifier
+==notifier - simple type-based notification
 
-Description goes here.
+   gem install notifier
 
-== Contributing to notifier
+notifier offers a simple type-based notification facility modeled much after ActionMailer.  You can create Notifier implementations that offer a method for each type of object/class that you would like to notify on via the 'notify!' method.
+
+For instance:
+
+    class FooNotifier < Notifier::Base
+
+          def bar(somebar, opts={})
+              puts "I just got Foo'd"
+          end
+
+    end
+
+    class Bar
+    end
+
+    FooNotifier.notify!(Bar.new)
+
+    I just got Foo'd
+    => nil
+
+==Examples
+
+You can find more examples in the /example directory along with corresponding unit tests in /test.
+
+==Contributing to notifier
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it

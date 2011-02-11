@@ -7,7 +7,7 @@
   Concrete sub-classes should implement a method named after the class type of the document being notified on - with the convention that the method 
   name is all downcase with '::' replaced with '_'.
 
-  For an example, see Notifier::Error in the /example directory.
+  For an example, see Notifier::Error in the /example directory and the corresponding unit test /test/test_error_notifier.rb.
 =end
 module Notifier
   class Base
