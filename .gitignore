@@ -11,6 +11,7 @@ doc
 # bundler
 .bundle
 simple-notifier
+notifier
 
 # jeweler generated
 pkg
