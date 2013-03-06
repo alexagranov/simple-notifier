@@ -1,7 +1,5 @@
 require 'helper'
-require 'example/error'
-require 'shoulda'
-require 'shoulda-matchers'
+#require 'notifier/error'
 
 class TestErrorNotifier < Test::Unit::TestCase
   context "the test error notifier" do

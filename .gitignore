@@ -1,3 +1,5 @@
+Gemfile.lock
+
 # rcov generated
 coverage
 
@@ -11,7 +13,6 @@ doc
 # bundler
 .bundle
 simple-notifier
-notifier
 
 # jeweler generated
 pkg

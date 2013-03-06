@@ -27,7 +27,7 @@ module Notifier
       def method_missing(method_symbol, *parameters) #:nodoc:
         if match = matches_dynamic_method?(method_symbol)
           case match[1]
-            when 'notify!':
+            when 'notify!'
               # support for notifying on Class types rather than just instances...
               if parameters[0].class == Class
                 method_to_call = parameters[0].to_s.downcase.gsub(/::/,"_")
@@ -35,7 +35,8 @@ module Notifier
                 method_to_call = parameters[0].class.to_s.downcase.gsub(/::/,"_")
               end
               new(method_to_call).send!(*parameters)
-            when 'new'     then nil
+            when 'new'
+              nil
             else super
           end
         else
